@@ -1,38 +1,11 @@
 {% if site.twitter_user %}
 <section>
-  <h1>About Me</h1>
+  <h1>Twitter</h1>
   <div id="twitter-profile" style="margin-top:0.5em;">
     <p>
-      <strong>{{site.author}}</strong> 
-      (<a href="http://twitter.com/{{site.twitter_user}}">@{{ site.twitter_user }}</a>)
+<a href="https://twitter.com/{{site.twitter_user}}" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @{{site.twitter_user}}</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </p>
-    <p>{{site.description}}</p>
   </div>
-  <script type="text/javascript">
-    $(function(){
-        var container = $('#twitter-profile'),
-            user = "{{site.twitter_user}}";
-        
-        function parseTwLinks(s) {
-          var twUrl = "http://www.twitter.com/"
-          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
-              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
-          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
-              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
-          })
-          return s
-        }
-
-        $.ajax({
-            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
-          , type: 'GET'
-          , dataType: 'jsonp'
-          , error: function (err) { $('#twitter-profile').addClass('error');  }
-          , success: function(data) {
-              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
-            }
-        })
-      });
-  </script>
 </section>
 {% endif %}
