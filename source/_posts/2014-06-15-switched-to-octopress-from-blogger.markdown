@@ -20,7 +20,7 @@ Octopress 2.0 also seems a little bit dated and has some small bugs / missing
 features and I can strongly recommend the article
 [Octopress Paper Cuts](http://blog.alexrothberg.com/2014/05/14/octopress-paper-cuts/)
 from Alex Rothberg.
-
+<!-- more -->
 The only main thing I do not like on Octopress is that everything is Ruby/Jekyll
 based with lots of dependencies (I wonder how smooth upgrading Octopress will
 work out) and I wished something like [Hugo](http://hugo.spf13.com/) (written in

@@ -17,7 +17,7 @@ The reason for this are:
 * It installs Virtualbox and has downgraded my existing Virtualbox Host software!
 * It installs an app and several binaries.
 * Everything packaged up into a `.pkg` and no uninstall app or instructions anywhere!
-
+<!-- more -->
 In summary it tries to do too much. Many developers use tools like Vagrant & Homebrew. Why not go that way?
 
 ### Uninstall steps for boot2docker / Docker
