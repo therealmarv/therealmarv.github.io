@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to fully uninstall the offical Docker OS X installation"
+title: "How to fully uninstall the official Docker OS X installation"
 date: 2014-08-26 00:41:46 +0200
 comments: true
 categories: [docker, uninstall]
