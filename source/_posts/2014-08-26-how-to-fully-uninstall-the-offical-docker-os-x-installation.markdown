@@ -44,6 +44,8 @@ Remove boot2docker VBox image:
 ```
 sudo rm /usr/local/share/boot2docker/boot2docker.iso
 sudo rmdir /usr/local/share/boot2docker
+
+rm -rf ~/.boot2docker
 ```
 
 ### (Optional) Uninstall steps for Virtualbox
@@ -59,4 +61,8 @@ If you really want to uninstall Virtualbox:
 
 I will explain this in a later post! :)
 
+---
 
+#### Update 2014-10-06:
+
+* Added [uninstall instructions for home directory](https://github.com/boot2docker/osx-installer/issues/46#issuecomment-56329250).
