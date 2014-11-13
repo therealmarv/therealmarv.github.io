@@ -25,7 +25,7 @@ In summary it tries to do too much. Many developers use tools like Vagrant & Hom
 Be sure you've only used the **official** installer. This uninstall guide is not the right one if you have installed Docker with e.g. Homebrew or other methods. 
 
 First stop boot2docker and delete the VBox image:
-```
+```bash
 boot2docker stop
 boot2docker delete
 ```
@@ -35,17 +35,22 @@ Remove the environmental variable `DOCKER_HOST` in case you have fixed it somewh
 Drag and Drop the boot2docker app logo from applications into the trash can of OS X.
 
 Remove Docker and boot2docker command line tools:
-```
+```bash
 sudo rm /usr/local/bin/docker
 sudo rm /usr/local/bin/boot2docker
 ```
 
 Remove boot2docker VBox image:
-```
+```bash
 sudo rm /usr/local/share/boot2docker/boot2docker.iso
 sudo rmdir /usr/local/share/boot2docker
 
 rm -rf ~/.boot2docker
+```
+
+Remove boot2docker ssh keys:
+```bash
+rm ~/.ssh/id_boot2docker*
 ```
 
 ### (Optional) Uninstall steps for Virtualbox
@@ -66,3 +71,7 @@ I will explain this in a later post! :)
 #### Update 2014-10-06:
 
 * Added [uninstall instructions for home directory](https://github.com/boot2docker/osx-installer/issues/46#issuecomment-56329250).
+
+#### Update 2014-11-13:
+
+* Added ssh keys uninstall. Thx to [@mtscout6](https://twitter.com/mtscout6)
