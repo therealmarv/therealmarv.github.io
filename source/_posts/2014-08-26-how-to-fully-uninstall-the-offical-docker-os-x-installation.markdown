@@ -75,3 +75,7 @@ I will explain this in a later post! :)
 #### Update 2014-11-13:
 
 * Added ssh keys uninstall. Thx to [@mtscout6](https://twitter.com/mtscout6)
+
+#### Update 2014-11-21:
+
+* boot2docker has now an [official uninstall script](https://github.com/boot2docker/osx-installer/blob/master/uninstall.sh) but I do not know how you are supposed to run it except downloading it directly from github and execute it :( Today I've checked and it is not inside the [official pkg installer](https://github.com/boot2docker/osx-installer/releases).
