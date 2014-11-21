@@ -8,7 +8,7 @@ categories: [docker, uninstall]
 
 No offense against [Docker](https://www.docker.com). I like the concept and the software!
 
-*- This guide is based on V1.1.2 of the installer -*
+*- This guide is based on V1.3.0 of the installer -*
 
 But I absolutely do **not** like the official Docker OS X installer ([install manual](https://docs.docker.com/installation/mac/)) which you can download [here](https://github.com/boot2docker/osx-installer/releases).
 
@@ -53,6 +53,12 @@ Remove boot2docker ssh keys:
 rm ~/.ssh/id_boot2docker*
 ```
 
+Remove additional boot2docker files in `/private` folder:
+```bash
+sudo rm -f /private/var/db/receipts/io.boot2docker.*
+sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
+```
+
 ### (Optional) Uninstall steps for Virtualbox
 
 You can also delete Virtualbox of course. But if you are a developer you probably need it anyway. In case your VBox got also downgraded: Reinstall Virtualbox.
@@ -78,4 +84,5 @@ I will explain this in a later post! :)
 
 #### Update 2014-11-21:
 
-* boot2docker has now an [official uninstall script](https://github.com/boot2docker/osx-installer/blob/master/uninstall.sh) but I do not know how you are supposed to run it except downloading it directly from github and execute it :( Today I've checked and it is not inside the [official pkg installer](https://github.com/boot2docker/osx-installer/releases).
+* boot2docker has now an [official uninstall script](https://github.com/boot2docker/osx-installer/blob/master/uninstall.sh) but I do not know how you are supposed to run it except downloading it directly from github and execute it :( Today I've checked and it is not inside the [official pkg installer](https://github.com/boot2docker/osx-installer/releases). It also [does not remove the boot2docker app](https://github.com/boot2docker/osx-installer/issues/88) from your programs.
+* Added uninstall routines for `/private` folder.
