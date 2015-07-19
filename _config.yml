@@ -99,6 +99,6 @@ google_analytics_tracking_id: UA-51940066-1
 # Facebook Like
 facebook_like: false
 
-# Stack Overlfow: add your user name and user id (the user id is visible in the url of your s.o. profile page)
+# Stack Overflow: add your user name and user id (the user id is visible in the url of your s.o. profile page)
 stackoverflow_user_name: therealmarv
 stackoverflow_user_id: 756056
