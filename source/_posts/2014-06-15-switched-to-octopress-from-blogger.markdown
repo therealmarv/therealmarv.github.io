@@ -31,5 +31,3 @@ and has the most 3rd party plugins. A big dev community is priceless!
 I also switch to my own domain entirely and the Github server which is serving
 this site has enough bandwidth if I will ever write some meaningful articles
 which will get linked to HN ;) :p
-
-In my next blog posts I will write some of my own experiences with Ubuntu Juju!
