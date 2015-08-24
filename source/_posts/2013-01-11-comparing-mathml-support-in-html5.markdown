@@ -46,4 +46,4 @@ Result:
 
 But see the rendered browser results yourself:
 
-[![MathML results](http://i.imgur.com/Z8n59.png)](http://i.imgur.com/Z8n59.png)
+[![MathML results](/images/mathml_chrome_firefox_opera.png)](/images/mathml_chrome_firefox_opera.png)
