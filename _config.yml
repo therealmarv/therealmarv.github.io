@@ -2,7 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://therealmarv.com
+url: https://therealmarv.com
+enforce_ssl: therealmarv.com
 title: therealmarv
 subtitle: I'm building things.
 author: Marvin R.
