@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | therealmarv]]></title>
+  <link href="https://therealmarv.com/categories/octopress/atom.xml" rel="self"/>
+  <link href="https://therealmarv.com/"/>
+  <updated>2015-08-26T11:54:25+02:00</updated>
+  <id>https://therealmarv.com/</id>
+  <author>
+    <name><![CDATA[Marvin Reimer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Switched to Octopress From Blogger]]></title>
+    <link href="https://therealmarv.com/switched-to-octopress-from-blogger/"/>
+    <updated>2014-06-15T22:03:18+02:00</updated>
+    <id>https://therealmarv.com/switched-to-octopress-from-blogger</id>
+    <content type="html"><![CDATA[<p>So I finally switched from Blogger to Octopress. Main reason was that Blogger
+itself is not very developer friendly especially if you want to write code like
+<code>this is is code</code> in blog posts.</p>
+
+<p><a href="http://octopress.org/">Octopress</a> has a wonderful documentation how to get it
+running on github pages and the standard design is very good for my needs.</p>
+
+<!-- more -->
+
+
+<p>I managed to migrate my old (two only) blog posts from Blogger and get
+everything setup on the weekend. I will maybe describe in a seperate posts how
+to install, migrate, publish on Github and fine tune Octopress.</p>
+
+<p>Octopress 2.0 also seems a little bit dated and has some small bugs / missing
+features and I can strongly recommend the article
+<a href="http://blog.alexrothberg.com/2014/05/14/octopress-paper-cuts/">Octopress Paper Cuts</a>
+from Alex Rothberg.</p>
+
+<p>The only main thing I do not like on Octopress is that everything is Ruby/Jekyll
+based with lots of dependencies (I wonder how smooth upgrading Octopress will
+work out) and I wished something like <a href="http://hugo.spf13.com/">Hugo</a> (written in
+go and one single binary) would have a bigger fan base. But Octopress beside
+Jekyll is the <a href="http://www.staticgen.com/">biggest player on static blog creation systems</a>
+and has the most 3rd party plugins. A big dev community is priceless!</p>
+
+<p>I also switch to my own domain entirely and the Github server which is serving
+this site has enough bandwidth if I will ever write some meaningful articles
+which will get linked to HN ;) :p</p>
+]]></content>
+  </entry>
+  
+</feed>

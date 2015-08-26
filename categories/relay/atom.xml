@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Relay | therealmarv]]></title>
+  <link href="https://therealmarv.com/categories/relay/atom.xml" rel="self"/>
+  <link href="https://therealmarv.com/"/>
+  <updated>2015-08-26T11:54:25+02:00</updated>
+  <id>https://therealmarv.com/</id>
+  <author>
+    <name><![CDATA[Marvin Reimer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding React, Flux, GraphQL and Relay Concepts With 4 Videos]]></title>
+    <link href="https://therealmarv.com/understanding-react-flux-graphql-and-relay-concepts-with-4-videos/"/>
+    <updated>2015-08-13T10:17:37+02:00</updated>
+    <id>https://therealmarv.com/understanding-react-flux-graphql-and-relay-concepts-with-4-videos</id>
+    <content type="html"><![CDATA[<p><strong>tl;dr</strong> go to this <a href="https://www.youtube.com/playlist?list=PL-bL2lHKyPirIeItmZ37XQ5Q-_gOkWkrn">playlist</a></p>
+
+<p>In the last couple of years I&rsquo;m educating myself more and more with videos from <a href="https://www.youtube.com">YouTube</a> to learn new things or keep up to date with the dev world. Especially live-video talks from developer conferences which are often recorded and available for free. <!-- more -->Just search for the <em>&ldquo;conference-name-of-your-choice&rdquo;</em> and their videos (keep an eye on their playlists)! Also many of this conferences are often not cheap to attend (time, travel costs, conference entrance, invitation only? etc.) so it is a very valuable source and convenient way just to sit in front of your TV (thanks Chromecast) and learn something new and useful whenever you want!</p>
+
+<p>I don&rsquo;t want to write much about React, Flux, GraphQL and Relay. You probably heard about them anyway but if you want to learn how they basically work you can save a lot of time by just watching this 4 videos. They are 122 minutes in total and I&rsquo;m sure you will save a lot of time in comparison to only reading about them.</p>
+
+<p>Btw.  it took me some time by finding the best videos about the topics ;) and IMHO we have to thank Facebook and their developers for developing React, Flux (the concept), GraphQL, Relay and making them all open source!</p>
+
+<p>They are truly simplifying development, extendibility, maintainability and testing of complex dynamic JS web pages (aka SPA) with RESTful server backends.</p>
+
+<h3>React</h3>
+
+<div class="embed-video-container">
+<iframe src="https://www.youtube.com/embed/x7cQ3mrcKaY?list=PL-bL2lHKyPirIeItmZ37XQ5Q-_gOkWkrn" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>Also read:<br/>
+<a href="http://blog.andrewray.me/reactjs-for-stupid-people/">ReactJS For Stupid People</a> from Andrew Ray</p>
+
+<h3>Flux</h3>
+
+<div class="embed-video-container">
+<iframe src="https://www.youtube.com/embed/i__969noyAM?list=PL-bL2lHKyPirIeItmZ37XQ5Q-_gOkWkrn" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>Also read:<br/>
+<a href="http://blog.andrewray.me/flux-for-stupid-people/">Flux for stupid people</a> from Andrew Ray</p>
+
+<h3>GraphQL</h3>
+
+<div class="embed-video-container">
+<iframe src="https://www.youtube.com/embed/9sc8Pyc51uU?list=PL-bL2lHKyPirIeItmZ37XQ5Q-_gOkWkrn" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h3>Relay</h3>
+
+<div class="embed-video-container">
+<iframe src="https://www.youtube.com/embed/IrgHurBjQbg?list=PL-bL2lHKyPirIeItmZ37XQ5Q-_gOkWkrn" frameborder="0" allowfullscreen></iframe>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

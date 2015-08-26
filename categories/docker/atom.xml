@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Docker | therealmarv]]></title>
+  <link href="https://therealmarv.com/categories/docker/atom.xml" rel="self"/>
+  <link href="https://therealmarv.com/"/>
+  <updated>2015-08-26T11:54:25+02:00</updated>
+  <id>https://therealmarv.com/</id>
+  <author>
+    <name><![CDATA[Marvin Reimer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Fully Uninstall the Official Docker OS X Installation]]></title>
+    <link href="https://therealmarv.com/how-to-fully-uninstall-the-offical-docker-os-x-installation/"/>
+    <updated>2014-08-26T00:41:46+02:00</updated>
+    <id>https://therealmarv.com/how-to-fully-uninstall-the-offical-docker-os-x-installation</id>
+    <content type="html"><![CDATA[<p>No offense against <a href="https://www.docker.com">Docker</a>. I like the concept and the software!</p>
+
+<p><em>&ndash; This guide is based on V1.3.0 of the installer &ndash;</em></p>
+
+<p>But I absolutely do <strong>not</strong> like the official Docker OS X installer (<a href="https://docs.docker.com/installation/mac/">install manual</a>) which you can download <a href="https://github.com/boot2docker/osx-installer/releases">here</a>.</p>
+
+<p>The reason for this are:</p>
+
+<ul>
+<li>It installs Virtualbox and has downgraded my existing Virtualbox Host software!</li>
+<li>It installs an app and several binaries.</li>
+<li>Everything packaged up into a <code>.pkg</code> and no uninstall app or instructions anywhere!</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>In summary it tries to do too much. Many developers use tools like Vagrant &amp; Homebrew. Why not go that way?</p>
+
+<h3>Uninstall steps for boot2docker / Docker</h3>
+
+<p>Be sure you&rsquo;ve only used the <strong>official</strong> installer. This uninstall guide is not the right one if you have installed Docker with e.g. Homebrew or other methods.</p>
+
+<p>First stop boot2docker and delete the VBox image:
+<code>bash
+boot2docker stop
+boot2docker delete
+</code></p>
+
+<p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code></p>
+
+<p>Drag and Drop the boot2docker app logo from applications into the trash can of OS X.</p>
+
+<p>Remove Docker and boot2docker command line tools:
+<code>bash
+sudo rm /usr/local/bin/docker
+sudo rm /usr/local/bin/boot2docker
+</code></p>
+
+<p>Remove boot2docker VBox image:
+```bash
+sudo rm /usr/local/share/boot2docker/boot2docker.iso
+sudo rmdir /usr/local/share/boot2docker</p>
+
+<p>rm -rf ~/.boot2docker
+```</p>
+
+<p>Remove boot2docker ssh keys:
+<code>bash
+rm ~/.ssh/id_boot2docker*
+</code></p>
+
+<p>Remove additional boot2docker files in <code>/private</code> folder:
+<code>bash
+sudo rm -f /private/var/db/receipts/io.boot2docker.*
+sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
+</code></p>
+
+<h3>(Optional) Uninstall steps for Virtualbox</h3>
+
+<p>You can also delete Virtualbox of course. But if you are a developer you probably need it anyway. In case your VBox got also downgraded: Reinstall Virtualbox.</p>
+
+<p>If you really want to uninstall Virtualbox:</p>
+
+<ul>
+<li>Download the latest official <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox installer</a>.</li>
+<li>Open the DMG file and <a href="https://www.virtualbox.org/manual/ch02.html#idp50285088">execute the uninstaller</a>. Simple!</li>
+</ul>
+
+
+<h3>But I like Docker, how to install it without pain on OS X and how to upgrade?</h3>
+
+<p>I will explain this in a later post! :)</p>
+
+<hr />
+
+<h4>Update 2014-10-06:</h4>
+
+<ul>
+<li>Added <a href="https://github.com/boot2docker/osx-installer/issues/46#issuecomment-56329250">uninstall instructions for home directory</a>.</li>
+</ul>
+
+
+<h4>Update 2014-11-13:</h4>
+
+<ul>
+<li>Added ssh keys uninstall. Thx to <a href="https://twitter.com/mtscout6">@mtscout6</a></li>
+</ul>
+
+
+<h4>Update 2014-11-21:</h4>
+
+<ul>
+<li>boot2docker has now an <a href="https://github.com/boot2docker/osx-installer/blob/master/uninstall.sh">official uninstall script</a> but I do not know how you are supposed to run it except downloading it directly from github and execute it :( Today I&rsquo;ve checked and it is not inside the <a href="https://github.com/boot2docker/osx-installer/releases">official pkg installer</a>. It also <a href="https://github.com/boot2docker/osx-installer/issues/88">does not remove the boot2docker app</a> from your programs.</li>
+<li>Added uninstall routines for <code>/private</code> folder.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
