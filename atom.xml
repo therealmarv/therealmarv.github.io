@@ -4,7 +4,7 @@
   <title><![CDATA[therealmarv]]></title>
   <link href="https://therealmarv.com/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2015-09-07T16:39:43+02:00</updated>
+  <updated>2015-09-07T16:47:37+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -54,7 +54,7 @@
 
 <p>this is something you cannot prevent because it tells you basically that you trust the owner of the key and that the owner is really him (do you know him personally? Me neither ;) so please ignore this last warning. You can read more about this little warning <a href="http://security.stackexchange.com/questions/6841/ways-to-sign-gpg-public-key-so-it-is-trusted">here</a>.</p>
 
-<p>So this whole file checking is a littlebit safer than a normal md5 or sha256 checksum because it involves the private key of the KeepassX owner. As always in computer science and life: Nothing is 100% safe.</p>
+<p>So this whole file checking is a little bit safer than a normal md5 or sha256 checksum because it involves the private key of the KeepassX owner. As always in computer science and life: Nothing is 100% safe.</p>
 ]]></content>
   </entry>
   
