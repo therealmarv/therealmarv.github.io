@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Installing Tidy-html5 on Ubuntu, First Step to Get Valid & Structured HTML5</title>
+  <title>Ansible Vault File Handling</title>
   <meta name="author" content="Marvin Reimer">
 
   
-  <meta name="description" content="At my work (OERPUB) we are starting to transform
-any HTML and especially HTML5 content to a structured HTML5 for further
-processing into various &hellip;">
+  <meta name="description" content="If you are familiar with DevOps you hopefully know this advice: Never ever store secret keys in your source code repository! If someone gains access &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ processing into various &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://therealmarv.com/installing-tidy-html5-on-ubuntu-first">
+  <link rel="canonical" href="https://therealmarv.com/ansible-vault-file-handling">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="therealmarv" type="application/atom+xml">
@@ -83,7 +81,7 @@ processing into various &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Installing Tidy-html5 on Ubuntu, First Step to Get Valid & Structured HTML5</h1>
+      <h1 class="entry-title">Ansible Vault File Handling</h1>
     
     
       <p class="meta">
@@ -99,7 +97,7 @@ processing into various &hellip;">
   
 
 
-<time datetime="2012-12-15T00:00:00+01:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+<time datetime="2015-09-03T18:38:54+02:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2015</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://therealmarv.com">Comments</a>
@@ -109,100 +107,114 @@ processing into various &hellip;">
   </header>
 
 
-<div class="entry-content"><p>At my work (<a href="http://oerpub.org/">OERPUB</a>) we are starting to transform
-any HTML and especially HTML5 content to a structured HTML5 for further
-processing into various output formats (html5, epub, pdf, xml).</p>
+<div class="entry-content"><p>If you are familiar with DevOps you hopefully know this advice:</p>
+
+<p><strong>Never ever</strong> store secret keys in your source code repository!</p>
+
+<p>If someone gains access to your repository then they will also gain access to your whole infrastructure!</p>
 
 <!-- more -->
 
 
-<p>The problem with transforming HTML5 to a more structured HTML5 is the
-parsing. The way to make this transformation is currently XSLT and we
-need XML compatible (X)HTML5 for this.</p>
+<p>But when you setup a server with Ansible you maybe need to copy a private key or SSL/TLS certificates to your servers at some time. Copying them manually was not a real option for me so I was happy when I found <a href="http://docs.ansible.com/ansible/playbooks_vault.html">Ansible Vault</a> which seemed at first like a simple and secure solution for encrypting files for storing them in a repository. However I was very disappointed when I tried it out because it <strong>only</strong> works with variables and not with files in a transparent way. I really wonder why?!</p>
 
-<p>In the past we used <a href="http://tidy.sourceforge.net/">HTML tidy</a> which
-handles all HTML soup and transforms it to valid XHTML. The only problem
-is that it is dated, the last version is from <strong>2008</strong> and it does
-<strong>not</strong> support HTML5 (and we also want MathML support).</p>
-
-<p>After some searching we&rsquo;ve found
-<a href="http://w3c.github.com/tidy-html5%C2%A0which">http://w3c.github.com/tidy-html5%C2%A0which</a> is a fork of tidy with support
-of HTML5. After my quick tests it seems compatible with the old tidy and
-(more important for me) also compatible to
-<a href="http://countergram.com/open-source/pytidylib">pytidylib</a> so that I can
-still use my old python code but with new HTML5 tidy options. :)</p>
-
-<p>Here are instructions on how to replace the old HTML tidy which is
-included in Ubuntu (tested on 10.04 &amp; 12.04) with the new HTML5 tidy:</p>
-
-<p>Remove all old tidy implementations</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get remove libtidy-0.99-0 tidy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Get git, libtool and automake if you do not have them already</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install git-core automake libtool
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Clone tidy-html5 repository in a directory of your choice</p>
+<p>So when you copy a file you maybe have something like this in your playfile (danger! this is the wrong way to do it):</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone https://github.com/w3c/tidy-html5
-</span><span class='line'><span class="nb">cd </span>tidy-html5
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">copy deployment private key</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">copy</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">src</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deployment_id_rsa</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">dest</span><span class="p-Indicator">:</span> <span class="s">&quot;/home/marvin/.ssh/id_rsa&quot;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">marvin</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">marvin</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0600</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Building the libtidy shared library and install libtidy and tidy program (<a href="http://building%20the%20libtidy%20shared%20library/">copied from here</a>)</p>
+<p>So I thought I can simply run <code>ansible-vault encrypt deployment_id_rsa</code> and do the same copy command as above. But this will not work because Ansible Vault is only working for variables.</p>
+
+<p>The solution is simple as long as you do not have binary secret data: You have to convert the secret private key file to a variable file which you need to import and also keep hidden in the (verbose <code>-vvvv</code>) logs!</p>
+
+<h3>How to modify the copy command:</h3>
+
+<p>Copy&amp;Paste your key into a variable file in your roles directory like e.g.  <code>roles/yourrole/vars/secret_key.yml</code>. It should look like this, look at the syntax and the usage of <code>|</code> in the YAML:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sh build/gnuauto/setup.sh <span class="o">&amp;&amp;</span> ./configure <span class="o">&amp;&amp;</span> make
-</span><span class='line'>sudo make install
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="nn">---</span>
+</span><span class='line'><span class="l-Scalar-Plain">private_key_content</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+</span><span class='line'>  <span class="no">-----BEGIN RSA PRIVATE KEY-----</span>
+</span><span class='line'>  <span class="no">MIIJKAIBAAKCAgEA25qk2rd29s4Z6vTBs1gHznsNS9e3J/C87H5pX0zm0UJtyUfm</span>
+</span><span class='line'>  <span class="no">+3hrX5Ag+U368OFO7XeR09iuWhae5FYe5GGFz7CRcIo29hLroXXQgh5cFfrmOdJw</span>
+</span><span class='line'>  <span class="no">GCvASbVJhIES0Q/XifS2KNU72fTge7teCsqXo9RgNzNqGK7pgXutPQ8e9NF3NfZj</span>
+</span><span class='line'>  <span class="no">XKJhzThde75Ih2Or36R7JKfNfq+jv9t8ulbSrlDltCXafo5+k/RdYtG8QhGKHTHW</span>
+</span><span class='line'>  <span class="no">...</span>
+</span><span class='line'>  <span class="no">...</span>
+</span><span class='line'>  <span class="no">...</span>
+</span><span class='line'>  <span class="no">-----END RSA PRIVATE KEY-----  </span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>So tidy and libtidy are now installed but Ubuntu will not find
-libtidy by default because libtidy installed to the folder
-<code>/usr/local/lib</code> which is normally not searched for
-runtime libraries. So we have to edit ldconfig&rsquo;s search folders.
-Open (with root/sudo rights) the file &ldquo;/etc/ld.so.conf&rdquo;. Example:</p>
+<p>Now encrypt that yaml with Ansible Vault:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>gksu gedit /etc/ld.so.conf
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ansible-vault encrypt secret_key.yml
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>and add this line to the file <code>/etc/ld.so.conf</code></p>
+<p>At this point it is safe to include it also into your git repository because it is encrypted.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>/usr/local/lib
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Finally restart ldconfig and you are set!</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo ldconfig
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Just a side note:<br/>
-To remove HTML5 tidy and install old tidy again just go to its cloned
-directory and type</p>
+<p>This variable file now needs to be imported in a playbook without logging <code>no_log: true</code> and copied to the right destination. The <code>copy</code> command can use a <code>content</code> attribute for reading from a string. So we will use the variable here.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo make uninstall
-</span><span class='line'>sudo apt-get install tidy libtidy-0.99-0
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">import secret variable file</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">include_vars</span><span class="p-Indicator">:</span> <span class="s">&quot;secret_key.yml&quot;</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">no_log</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span><span class='line'>
+</span><span class='line'><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">copy deployment private key</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">copy</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">content</span><span class="p-Indicator">:</span> <span class="s">&quot;{{private_key_content}}&quot;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">dest</span><span class="p-Indicator">:</span> <span class="s">&quot;/home/marvin/.ssh/id_rsa&quot;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">marvin</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">marvin</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">mode</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0600</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">no_log</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>This way you can copy encrypted non-binary files contents without logging them.</p>
+
+<p>On provisioning you only need to add <code>--ask-vault-pass</code> to the command. Example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ansible-playbook site.yml -i production_hosts -l production -vvvv --ask-vault-pass
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -226,12 +238,12 @@ directory and type</p>
   
 
 
-<time datetime="2012-12-15T00:00:00+01:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+<time datetime="2015-09-03T18:38:54+02:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/html5/'>html5</a>, <a class='category' href='/categories/tidy/'>tidy</a>, <a class='category' href='/categories/ubuntu/'>ubuntu</a>
+    <a class='category' href='/categories/ansible/'>ansible</a>, <a class='category' href='/categories/devops/'>devops</a>
   
 </span>
 
@@ -240,7 +252,7 @@ directory and type</p>
     
       <div class="sharing">
   
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://therealmarv.com/installing-tidy-html5-on-ubuntu-first/" data-via="therealmarv" data-counturl="https://therealmarv.com/installing-tidy-html5-on-ubuntu-first/" >Tweet</a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://therealmarv.com/ansible-vault-file-handling/" data-via="therealmarv" data-counturl="https://therealmarv.com/ansible-vault-file-handling/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -251,8 +263,10 @@ directory and type</p>
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/understanding-react-flux-graphql-and-relay-concepts-with-4-videos/" title="Previous Post: Understanding React, Flux, GraphQL and Relay concepts with 4 videos">&laquo; Understanding React, Flux, GraphQL and Relay concepts with 4 videos</a>
       
-        <a class="basic-alignment right" href="/comparing-mathml-support-in-html5/" title="Next Post: Comparing MathML support in HTML5 between Chrome 24, Firefox 18 and Opera 12">Comparing MathML support in HTML5 between Chrome 24, Firefox 18 and Opera 12 &raquo;</a>
+      
+        <a class="basic-alignment right" href="/how-to-check-keepassx-signatures-with-gnupg/" title="Next Post: How to check KeepassX .sig signatures with GnuPG">How to check KeepassX .sig signatures with GnuPG &raquo;</a>
       
     </p>
   </footer>
@@ -373,8 +387,8 @@ directory and type</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://therealmarv.com/installing-tidy-html5-on-ubuntu-first/';
-        var disqus_url = 'https://therealmarv.com/installing-tidy-html5-on-ubuntu-first/';
+        var disqus_identifier = 'https://therealmarv.com/ansible-vault-file-handling/';
+        var disqus_url = 'https://therealmarv.com/ansible-vault-file-handling/';
         var disqus_script = 'embed.js';
       
     (function () {

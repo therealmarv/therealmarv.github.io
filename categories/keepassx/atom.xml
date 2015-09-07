@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Keepassx | therealmarv]]></title>
+  <link href="https://therealmarv.com/categories/keepassx/atom.xml" rel="self"/>
+  <link href="https://therealmarv.com/"/>
+  <updated>2015-09-07T16:39:43+02:00</updated>
+  <id>https://therealmarv.com/</id>
+  <author>
+    <name><![CDATA[Marvin Reimer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Check KeepassX .sig Signatures With GnuPG]]></title>
+    <link href="https://therealmarv.com/how-to-check-keepassx-signatures-with-gnupg/"/>
+    <updated>2015-09-07T13:47:29+02:00</updated>
+    <id>https://therealmarv.com/how-to-check-keepassx-signatures-with-gnupg</id>
+    <content type="html"><![CDATA[<p>This example uses KeepassX but works the same for other projects which use <code>.sig</code> signature files (another example is OpenResty).</p>
+
+<p>First install GnuPG for your OS. Ubuntu has it usally installed from scratch. For OS X use Homebrew and install it with <code>brew install gnupg</code>.</p>
+
+<!-- more -->
+
+
+<p>Get the public key of the owner first. According to <a href="https://www.keepassx.org/news/">this page</a> the public key is <code>83135D45</code>. So import the public key from a public keyserver (here from MIT):</p>
+
+<p><code>bash
+gpg --keyserver pgpkeys.mit.edu --recv-key 83135D45
+</code></p>
+
+<p>Download KeepassX install file and its signature file from <a href="https://www.keepassx.org/dev/projects/keepassx/files">www.keepassx.org/dev/projects/keepassx/files</a>.</p>
+
+<p>Verify signature (in this example with beta2, OS X):</p>
+
+<p><code>bash
+gpg --verify KeePassX-2.0-beta2.dmg.sig KeePassX-2.0-beta2.dmg
+</code></p>
+
+<p>The last command should tell you that the file was correctly signed. You can also recheck that everything is ok by printing the exit code of the last command with <code>echo $?</code> which should be 0. Otherwise you have a <strong>WRONG</strong> file without valid signature! Redownload it and check again, if it fails again do <strong>not</strong> install it!</p>
+
+<p>One note: Most likely you will also get a warning (but no error!) like:</p>
+
+<p><code>
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+</code></p>
+
+<p>this is something you cannot prevent because it tells you basically that you trust the owner of the key and that the owner is really him (do you know him personally? Me neither ;) so please ignore this last warning. You can read more about this little warning <a href="http://security.stackexchange.com/questions/6841/ways-to-sign-gpg-public-key-so-it-is-trusted">here</a>.</p>
+
+<p>So this whole file checking is a littlebit safer than a normal md5 or sha256 checksum because it involves the private key of the KeepassX owner. As always in computer science and life: Nothing is 100% safe.</p>
+]]></content>
+  </entry>
+  
+</feed>
