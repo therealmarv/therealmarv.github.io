@@ -37,4 +37,4 @@ gpg:          There is no indication that the signature belongs to the owner.
 
 this is something you cannot prevent because it tells you basically that you trust the owner of the key and that the owner is really him (do you know him personally? Me neither ;) so please ignore this last warning. You can read more about this little warning [here](http://security.stackexchange.com/questions/6841/ways-to-sign-gpg-public-key-so-it-is-trusted).
 
-So this whole file checking is a littlebit safer than a normal md5 or sha256 checksum because it involves the private key of the KeepassX owner. As always in computer science and life: Nothing is 100% safe.
+So this whole file checking is a little bit safer than a normal md5 or sha256 checksum because it involves the private key of the KeepassX owner. As always in computer science and life: Nothing is 100% safe.
