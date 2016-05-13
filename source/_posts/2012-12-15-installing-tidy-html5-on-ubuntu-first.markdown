@@ -9,7 +9,7 @@ categories:
  - tidy
 ---
 
-At my work ([OERPUB](http://oerpub.org/)) we are starting to transform
+At [OERPUB](http://oerpub.org/) we are starting to transform
 any HTML and especially HTML5 content to a structured HTML5 for further
 processing into various output formats (html5, epub, pdf, xml).
 <!-- more -->
