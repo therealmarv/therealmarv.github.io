@@ -4,7 +4,7 @@
   <title><![CDATA[therealmarv]]></title>
   <link href="https://therealmarv.com/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-05-13T12:22:21+02:00</updated>
+  <updated>2016-05-13T12:41:06+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -439,7 +439,7 @@ display all kind of MathML right in every browser except Firefox.</p>
     <link href="https://therealmarv.com/installing-tidy-html5-on-ubuntu-first/"/>
     <updated>2012-12-15T00:00:00+01:00</updated>
     <id>https://therealmarv.com/installing-tidy-html5-on-ubuntu-first</id>
-    <content type="html"><![CDATA[<p>At my work (<a href="http://oerpub.org/">OERPUB</a>) we are starting to transform
+    <content type="html"><![CDATA[<p>At <a href="http://oerpub.org/">OERPUB</a> we are starting to transform
 any HTML and especially HTML5 content to a structured HTML5 for further
 processing into various output formats (html5, epub, pdf, xml).</p>
 
