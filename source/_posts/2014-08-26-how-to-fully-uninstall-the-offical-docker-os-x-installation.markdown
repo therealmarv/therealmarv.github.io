@@ -8,13 +8,13 @@ categories: [docker, uninstall]
 
 No offense against [Docker](https://www.docker.com). I like the concept and the software!
 
-*- This guide is based on V1.3.0 of the installer -*
+*- This guide works for docker toolbox and old boot2docker, some boot2docker steps uninstall steps are not needed but it will not hurt for docker toolbox uninstallation -*
 
-But I absolutely do **not** like the official Docker OS X installer ([install manual](https://docs.docker.com/installation/mac/)) which you can download [here](https://github.com/boot2docker/osx-installer/releases).
+But I absolutely do **not** like the official Docker OS X installer ([install manual](https://docs.docker.com/installation/mac/)).
 
 The reason for this are:
 
-* It installs Virtualbox and has downgraded my existing Virtualbox Host software!
+* ~~It installs Virtualbox and has downgraded my existing Virtualbox Host software (seems this is fixed for Docker toolbox now).~~
 * It installs an app and several binaries.
 * Everything packaged up into a `.pkg` and no uninstall app or instructions anywhere!
 <!-- more -->
@@ -22,9 +22,14 @@ In summary it tries to do too much. Many developers use tools like Vagrant & Hom
 
 ### Uninstall steps for boot2docker / Docker
 
-Be sure you've only used the **official** installer. This uninstall guide is not the right one if you have installed Docker with e.g. Homebrew or other methods. 
+Be sure you've only used the **official** installer. This uninstall guide is not the right one if you have installed Docker with e.g. Homebrew or other methods.
 
-First stop boot2docker and delete the VBox image:
+If you also want to delete all your docker machines first run:
+```bash
+docker-machine rm -f $(docker-machine ls -q);
+```
+
+Stop boot2docker and delete the VBox image:
 ```bash
 boot2docker stop
 boot2docker delete
@@ -32,18 +37,32 @@ boot2docker delete
 
 Remove the environmental variable `DOCKER_HOST` in case you have fixed it somewhere like e.g. in `.bash_profile`
 
-Drag and Drop the boot2docker app logo from applications into the trash can of OS X.
-
-Remove Docker and boot2docker command line tools:
+Remove boot2docker & docker app:
 ```bash
-sudo rm /usr/local/bin/docker
-sudo rm /usr/local/bin/boot2docker
+sudo rm -rf /Applications/boot2docker
+sudo rm -rf /Applications/Docker
+```
+
+Remove all Docker and boot2docker command line tools:
+```bash
+sudo rm -f /usr/local/bin/docker
+sudo rm -f /usr/local/bin/boot2docker
+sudo rm -f /usr/local/bin/docker-machine
+sudo rm -r /usr/local/bin/docker-machine-driver*
+sudo rm -f /usr/local/bin/docker-compose
+```
+
+Remove docker packages:
+```bash
+pkgutil --forget io.docker.pkg.docker
+pkgutil --forget io.docker.pkg.dockercompose
+pkgutil --forget io.docker.pkg.dockermachine
+pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 ```
 
 Remove boot2docker VBox image:
 ```bash
-sudo rm /usr/local/share/boot2docker/boot2docker.iso
-sudo rmdir /usr/local/share/boot2docker
+sudo rm -rf /usr/local/share/boot2docker
 
 rm -rf ~/.boot2docker
 ```
@@ -68,11 +87,11 @@ If you really want to uninstall Virtualbox:
 * Download the latest official [Virtualbox installer](https://www.virtualbox.org/wiki/Downloads).
 * Open the DMG file and [execute the uninstaller](https://www.virtualbox.org/manual/ch02.html#idp50285088). Simple!
 
-### But I like Docker, how to install it without pain on OS X and how to upgrade?
-
-I will explain this in a later post! :)
-
 ---
+
+#### Update 2016-06-03:
+
+* Added newest uninstall procedures for [docker toolbox](https://github.com/docker/toolbox/blob/master/osx/uninstall.sh).
 
 #### Update 2014-10-06:
 
@@ -80,7 +99,7 @@ I will explain this in a later post! :)
 
 #### Update 2014-11-13:
 
-* Added ssh keys uninstall. Thx to [@mtscout6](https://twitter.com/mtscout6)
+* Added ssh keys uninstall. Thx to [@mtscout6](https://twitter.com/mtscout6).
 
 #### Update 2014-11-21:
 
