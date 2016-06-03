@@ -4,7 +4,7 @@
   <title><![CDATA[therealmarv]]></title>
   <link href="https://therealmarv.com/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-03T12:15:59+02:00</updated>
+  <updated>2016-06-03T12:46:20+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -240,7 +240,7 @@
 <p>The reason for this are:</p>
 
 <ul>
-<li><del>It installs Virtualbox and has downgraded my existing Virtualbox Host software (seems this is fixed for Docker toolbox now).</del></li>
+<li><del>It installs Virtualbox and has downgraded my existing Virtualbox Host software</del> (seems this is fixed for Docker toolbox now).</li>
 <li>It installs an app and several binaries.</li>
 <li>Everything packaged up into a <code>.pkg</code> and no uninstall app or instructions anywhere!</li>
 </ul>
