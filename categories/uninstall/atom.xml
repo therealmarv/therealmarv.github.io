@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uninstall | therealmarv]]></title>
   <link href="https://therealmarv.com/categories/uninstall/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-03T12:12:58+02:00</updated>
+  <updated>2016-06-03T12:15:59+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -53,8 +53,6 @@ boot2docker stop
 boot2docker delete
 </code></p>
 
-<p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code></p>
-
 <p>Remove boot2docker &amp; docker app:
 <code>bash
 sudo rm -rf /Applications/boot2docker
@@ -95,6 +93,8 @@ rm ~/.ssh/id_boot2docker*
 sudo rm -f /private/var/db/receipts/io.boot2docker.*
 sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
 </code></p>
+
+<p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code>.</p>
 
 <h3>(Optional) Uninstall steps for Virtualbox</h3>
 
