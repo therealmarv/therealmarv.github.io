@@ -9,7 +9,7 @@
   <meta name="author" content="Marvin Reimer">
 
   
-  <meta name="description" content="No offense against Docker. I like the concept and the software! &ndash; This guide is based on V1.3.0 of the installer &ndash; But I absolutely do &hellip;">
+  <meta name="description" content="No offense against Docker. I like the concept and the software! &ndash; This guide works for docker toolbox and old boot2docker, some boot2docker &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,14 +109,14 @@
 
 <div class="entry-content"><p>No offense against <a href="https://www.docker.com">Docker</a>. I like the concept and the software!</p>
 
-<p><em>&ndash; This guide is based on V1.3.0 of the installer &ndash;</em></p>
+<p><em>&ndash; This guide works for docker toolbox and old boot2docker, some boot2docker steps uninstall steps are not needed but it will not hurt for docker toolbox uninstallation &ndash;</em></p>
 
-<p>But I absolutely do <strong>not</strong> like the official Docker OS X installer (<a href="https://docs.docker.com/installation/mac/">install manual</a>) which you can download <a href="https://github.com/boot2docker/osx-installer/releases">here</a>.</p>
+<p>But I absolutely do <strong>not</strong> like the official Docker OS X installer (<a href="https://docs.docker.com/installation/mac/">install manual</a>).</p>
 
 <p>The reason for this are:</p>
 
 <ul>
-<li>It installs Virtualbox and has downgraded my existing Virtualbox Host software!</li>
+<li><del>It installs Virtualbox and has downgraded my existing Virtualbox Host software (seems this is fixed for Docker toolbox now).</del></li>
 <li>It installs an app and several binaries.</li>
 <li>Everything packaged up into a <code>.pkg</code> and no uninstall app or instructions anywhere!</li>
 </ul>
@@ -131,7 +131,14 @@
 
 <p>Be sure you&rsquo;ve only used the <strong>official</strong> installer. This uninstall guide is not the right one if you have installed Docker with e.g. Homebrew or other methods.</p>
 
-<p>First stop boot2docker and delete the VBox image:</p>
+<p>If you also want to delete all your docker machines first run:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>docker-machine rm -f <span class="k">$(</span>docker-machine ls -q<span class="k">)</span>;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Stop boot2docker and delete the VBox image:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -142,14 +149,40 @@
 
 <p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code></p>
 
-<p>Drag and Drop the boot2docker app logo from applications into the trash can of OS X.</p>
-
-<p>Remove Docker and boot2docker command line tools:</p>
+<p>Remove boot2docker &amp; docker app:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rm /usr/local/bin/docker
-</span><span class='line'>sudo rm /usr/local/bin/boot2docker
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rm -rf /Applications/boot2docker
+</span><span class='line'>sudo rm -rf /Applications/Docker
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remove all Docker and boot2docker command line tools:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rm -f /usr/local/bin/docker
+</span><span class='line'>sudo rm -f /usr/local/bin/boot2docker
+</span><span class='line'>sudo rm -f /usr/local/bin/docker-machine
+</span><span class='line'>sudo rm -r /usr/local/bin/docker-machine-driver*
+</span><span class='line'>sudo rm -f /usr/local/bin/docker-compose
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remove docker packages:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pkgutil --forget io.docker.pkg.docker
+</span><span class='line'>pkgutil --forget io.docker.pkg.dockercompose
+</span><span class='line'>pkgutil --forget io.docker.pkg.dockermachine
+</span><span class='line'>pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -158,9 +191,7 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rm /usr/local/share/boot2docker/boot2docker.iso
-</span><span class='line'>sudo rmdir /usr/local/share/boot2docker
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo rm -rf /usr/local/share/boot2docker
 </span><span class='line'>
 </span><span class='line'>rm -rf ~/.boot2docker
 </span></code></pre></td></tr></table></div></figure>
@@ -194,11 +225,14 @@
 </ul>
 
 
-<h3>But I like Docker, how to install it without pain on OS X and how to upgrade?</h3>
-
-<p>I will explain this in a later post! :)</p>
-
 <hr />
+
+<h4>Update 2016-06-03:</h4>
+
+<ul>
+<li>Added newest uninstall procedures for <a href="https://github.com/docker/toolbox/blob/master/osx/uninstall.sh">docker toolbox</a>.</li>
+</ul>
+
 
 <h4>Update 2014-10-06:</h4>
 
@@ -210,7 +244,7 @@
 <h4>Update 2014-11-13:</h4>
 
 <ul>
-<li>Added ssh keys uninstall. Thx to <a href="https://twitter.com/mtscout6">@mtscout6</a></li>
+<li>Added ssh keys uninstall. Thx to <a href="https://twitter.com/mtscout6">@mtscout6</a>.</li>
 </ul>
 
 
