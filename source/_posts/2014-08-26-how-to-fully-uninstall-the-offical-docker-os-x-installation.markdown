@@ -10,7 +10,7 @@ No offense against [Docker](https://www.docker.com). I like the concept and the 
 
 *- This guide works for docker toolbox and old boot2docker, some boot2docker steps uninstall steps are not needed but it will not hurt for docker toolbox uninstallation -*
 
-But I absolutely do **not** like the official Docker OS X installer ([install manual](https://docs.docker.com/installation/mac/)).
+~~But I absolutely do **not** like the official Docker OS X installer~~ ([install manual](https://docs.docker.com/installation/mac/)). Things are improved with docker toolbox but uninstalling is still not trivial.
 
 The reason for this are:
 
