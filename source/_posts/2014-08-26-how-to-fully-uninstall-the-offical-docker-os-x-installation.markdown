@@ -35,8 +35,6 @@ boot2docker stop
 boot2docker delete
 ```
 
-Remove the environmental variable `DOCKER_HOST` in case you have fixed it somewhere like e.g. in `.bash_profile`
-
 Remove boot2docker & docker app:
 ```bash
 sudo rm -rf /Applications/boot2docker
@@ -77,6 +75,8 @@ Remove additional boot2docker files in `/private` folder:
 sudo rm -f /private/var/db/receipts/io.boot2docker.*
 sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
 ```
+
+Remove the environmental variable `DOCKER_HOST` in case you have fixed it somewhere like e.g. in `.bash_profile`.
 
 ### (Optional) Uninstall steps for Virtualbox
 
