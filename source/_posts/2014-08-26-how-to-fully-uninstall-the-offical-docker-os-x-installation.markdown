@@ -14,7 +14,7 @@ No offense against [Docker](https://www.docker.com). I like the concept and the 
 
 The reason for this are:
 
-* ~~It installs Virtualbox and has downgraded my existing Virtualbox Host software (seems this is fixed for Docker toolbox now).~~
+* ~~It installs Virtualbox and has downgraded my existing Virtualbox Host software~~ (seems this is fixed for Docker toolbox now).
 * It installs an app and several binaries.
 * Everything packaged up into a `.pkg` and no uninstall app or instructions anywhere!
 <!-- more -->
