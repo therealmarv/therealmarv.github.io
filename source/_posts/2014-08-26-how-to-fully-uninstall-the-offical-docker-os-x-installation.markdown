@@ -52,10 +52,10 @@ sudo rm -f /usr/local/bin/docker-compose
 
 Remove docker packages:
 ```bash
-pkgutil --forget io.docker.pkg.docker
-pkgutil --forget io.docker.pkg.dockercompose
-pkgutil --forget io.docker.pkg.dockermachine
-pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
+sudo pkgutil --forget io.docker.pkg.docker
+sudo pkgutil --forget io.docker.pkg.dockercompose
+sudo pkgutil --forget io.docker.pkg.dockermachine
+sudo pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 ```
 
 Remove boot2docker VBox image:
