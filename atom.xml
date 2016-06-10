@@ -4,7 +4,7 @@
   <title><![CDATA[therealmarv]]></title>
   <link href="https://therealmarv.com/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-03T12:46:20+02:00</updated>
+  <updated>2016-06-10T12:15:00+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -301,10 +301,10 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>pkgutil --forget io.docker.pkg.docker
-</span><span class='line'>pkgutil --forget io.docker.pkg.dockercompose
-</span><span class='line'>pkgutil --forget io.docker.pkg.dockermachine
-</span><span class='line'>pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo pkgutil --forget io.docker.pkg.docker
+</span><span class='line'>sudo pkgutil --forget io.docker.pkg.dockercompose
+</span><span class='line'>sudo pkgutil --forget io.docker.pkg.dockermachine
+</span><span class='line'>sudo pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 </span></code></pre></td></tr></table></div></figure>
 
 

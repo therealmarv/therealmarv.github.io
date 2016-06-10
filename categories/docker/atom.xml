@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Docker | therealmarv]]></title>
   <link href="https://therealmarv.com/categories/docker/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-03T12:46:20+02:00</updated>
+  <updated>2016-06-10T12:15:00+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -70,10 +70,10 @@ sudo rm -f /usr/local/bin/docker-compose
 
 <p>Remove docker packages:
 <code>bash
-pkgutil --forget io.docker.pkg.docker
-pkgutil --forget io.docker.pkg.dockercompose
-pkgutil --forget io.docker.pkg.dockermachine
-pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
+sudo pkgutil --forget io.docker.pkg.docker
+sudo pkgutil --forget io.docker.pkg.dockercompose
+sudo pkgutil --forget io.docker.pkg.dockermachine
+sudo pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 </code></p>
 
 <p>Remove boot2docker VBox image:
