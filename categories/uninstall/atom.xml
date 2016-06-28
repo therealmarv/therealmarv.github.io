@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uninstall | therealmarv]]></title>
   <link href="https://therealmarv.com/categories/uninstall/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-10T12:15:00+02:00</updated>
+  <updated>2016-06-28T12:44:17+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -94,6 +94,11 @@ sudo rm -f /private/var/db/receipts/io.boot2docker.*
 sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
 </code></p>
 
+<p>Remove docker toolbox config folder:
+<code>bash
+rm -rf ~/.docker
+</code></p>
+
 <p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code>.</p>
 
 <h3>(Optional) Uninstall steps for Virtualbox</h3>
@@ -109,6 +114,13 @@ sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
 
 
 <hr />
+
+<h4>Update 2016-06-28:</h4>
+
+<ul>
+<li>Also remove docker toolbox <code>~/.docker</code> directory.</li>
+</ul>
+
 
 <h4>Update 2016-06-03:</h4>
 

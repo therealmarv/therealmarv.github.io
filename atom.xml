@@ -4,7 +4,7 @@
   <title><![CDATA[therealmarv]]></title>
   <link href="https://therealmarv.com/atom.xml" rel="self"/>
   <link href="https://therealmarv.com/"/>
-  <updated>2016-06-10T12:15:00+02:00</updated>
+  <updated>2016-06-28T12:44:17+02:00</updated>
   <id>https://therealmarv.com/</id>
   <author>
     <name><![CDATA[Marvin Reimer]]></name>
@@ -335,6 +335,13 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>Remove docker toolbox config folder:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -rf ~/.docker
+</span></code></pre></td></tr></table></div></figure>
+
+
 <p>Remove the environmental variable <code>DOCKER_HOST</code> in case you have fixed it somewhere like e.g. in <code>.bash_profile</code>.</p>
 
 <h3>(Optional) Uninstall steps for Virtualbox</h3>
@@ -350,6 +357,13 @@
 
 
 <hr />
+
+<h4>Update 2016-06-28:</h4>
+
+<ul>
+<li>Also remove docker toolbox <code>~/.docker</code> directory.</li>
+</ul>
+
 
 <h4>Update 2016-06-03:</h4>
 
