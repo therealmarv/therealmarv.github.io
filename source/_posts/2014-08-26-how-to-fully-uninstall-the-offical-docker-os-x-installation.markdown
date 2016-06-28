@@ -76,6 +76,11 @@ sudo rm -f /private/var/db/receipts/io.boot2docker.*
 sudo rm -f /private/var/db/receipts/io.boot2dockeriso.*
 ```
 
+Remove docker toolbox config folder:
+```bash
+rm -rf ~/.docker
+```
+
 Remove the environmental variable `DOCKER_HOST` in case you have fixed it somewhere like e.g. in `.bash_profile`.
 
 ### (Optional) Uninstall steps for Virtualbox
@@ -88,6 +93,10 @@ If you really want to uninstall Virtualbox:
 * Open the DMG file and [execute the uninstaller](https://www.virtualbox.org/manual/ch02.html#idp50285088). Simple!
 
 ---
+
+#### Update 2016-06-28:
+
+* Also remove docker toolbox `~/.docker` directory.
 
 #### Update 2016-06-03:
 
